@@ -17,17 +17,18 @@
   padding: 15px 30px;
   font-size: inherit;
   font-weight: 700;
-  width: 280px;
+  width: 100%;
   letter-spacing: 2.3px;
 }
 .featured-title {
-  font-size: 55px;
   font-weight: 700px;
 }
 .featured-artist {
   font-weight: 300;
   font-size: 18px;
 }
+
+
 
 /* .fa-play,
 .fa-pause {
@@ -37,3 +38,9 @@
   border-radius: 15px;
   cursor: pointer;
 } */
+  @media(min-width : 700px){
+   .featured-tag{
+     width: 280px;
+   }
+
+  }

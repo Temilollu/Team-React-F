@@ -23,20 +23,21 @@ class Artists extends Component {
     const artistsJson = await artistsFetch.json();
     const artists = artistsJson.results;
     this.setState({
-      artists,
+      artists : artists.splice(0,9)
     });
   }
   render() {
     const { artists } = this.state;
+    console.log( artists);
     return (
-      <div className="row justify-content-center">
-        <div className="col-2 px-0" id="sidebar">
+      <div className='row mx-0'>
+        {/* <div className="col-2 px-0" >
           <Sidebar path={this.props.path} />
-        </div>
-        <div
-          className="col-10  px-0 mx-0"
-          style={{ position: "absolute", right: 0 }}
-        >
+        </div> */}
+        <div className="col-2"  id="sidebar" style={{ padding : 0 }}>
+            <Sidebar activePath="artists" /> 
+          </div>
+        <div className="col-10 mobile__body px-0 mx-0">
           <div className="row justify-content-center">
             <Header
               header="ARTISTS"
@@ -46,6 +47,7 @@ class Artists extends Component {
               image={artist}
             />
             {artists.map((artist) => {
+
               return (
                 <div className="card col-3 m-3">
                   <img src={artist.image} alt="" className="w-25" />

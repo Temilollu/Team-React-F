@@ -1,9 +1,20 @@
 .track {
   cursor: pointer;
-  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  border-left: 1px solid white;
   padding: 10px;
 }
 .track-title {
   font-size: 16px;
   color: var(--darkPink);
+}
+
+.track.col-4{
+  flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+@media(max-width : 600px){
+  .track.col-4{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }

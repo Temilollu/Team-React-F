@@ -14,9 +14,7 @@ const TopAlbums = ({ albums }) => {
       <div className="row my-5" id="top-albums">
         <div className="col-12">
           <h1 className="main-heading my-4">Monthly Top Albums</h1>
-          <Link to="/albums" className="see-all-btn">
-            See All
-          </Link>
+          
         </div>
         {albums.map((album, idx) => {
           while (idx < 4) {
@@ -35,7 +33,9 @@ const TopAlbums = ({ albums }) => {
           }
           return null;
         })}
-        ;
+        <Link to="/albums" className="see-all-btn">
+            View all Albums
+          </Link>
       </div>
     </React.Fragment>
   );

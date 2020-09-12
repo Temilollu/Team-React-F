@@ -1,13 +1,50 @@
 #top-artists {
   position: relative;
+  width: 100%;
+  display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 .artist-image {
   width: 100%;
   height: 80px;
   border-radius: 50%;
 }
-.see-all-btn {
+
+.top_artist.col-2{
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+.see-all-btn{
   position: absolute;
-  top: 0;
-  right: 0;
+  right: 5%;
+  bottom: -10%;
+  font-weight: bold;
+  color: white;
+}
+.see-all-btn:hover{
+  color: red;
+}
+
+@media(max-width : 600px){
+  .top_artist.col-2{
+    flex: none;
+    width: 31%;
+    max-width: none;
+  }
+  .see-all-btn{
+    padding-left: 15px;
+    margin-top: 1rem;
+    position: absolute;
+    right: 10%;
+    bottom: 15%;
+    color : white;
+  }
+  #top-artists .see-all-btn{
+    bottom: -10%;
+  }
 }

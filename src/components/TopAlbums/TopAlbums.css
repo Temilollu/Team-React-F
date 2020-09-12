@@ -1,13 +1,13 @@
 #top-albums {
   position: relative;
+ padding-bottom: 6rem !important;
 }
 .album-image {
   width: 100%;
   height: 130px;
   border-radius: 10px;
 }
-.see-all-btn {
-  position: absolute;
-  top: 10px;
-  right: 30px;
+
+#top-albums .see-all-btn{
+  bottom: 12%;
 }

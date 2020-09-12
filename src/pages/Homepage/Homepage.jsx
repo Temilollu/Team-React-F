@@ -25,27 +25,27 @@ class HomePage extends Component {
     return (
       <React.Fragment>
         <div className="row mx-0">
-          <div className="col-2 px-0" id="sidebar">
-            <Sidebar path={this.props.path} />
+        <div className="col-2 "   style={{background: "white", padding : 0 }}>
+            <Sidebar activePath="/" /> 
           </div>
           <div
-            className="col-10 px-0 mx-0"
-            style={{ position: "absolute", right: 0 }}
+           className="col-10 mobile__body"
+            style={{ position: "absolute", right: 0, padding : 0 }}
           >
-            <div className="col-12 px-0 d-flex">
+            <div className="col-12 d-flex show">
               <Featured
                 tracks={this.props.tracks}
                 currentTrack={this.props.currentTrack}
               />
             </div>
 
-            <div className="col-12 d-flex">
+            <div className="col-12 d-flex" style={{paddingRight : 0}} >
               <WeeklyTopChart
                 tracks={this.props.tracks}
                 handleClick={this.props.handleClick}
               />
             </div>
-            <div className="col-12 d-flex">
+            <div className="charts_tracks d-flex">
               <div className="col-6">
                 <TopCharts
                   tracks={this.props.tracks}

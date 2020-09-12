@@ -2,9 +2,6 @@
   font-size: 25px;
   font-weight: 700;
 }
-.track-card {
-  cursor: pointer;
-}
 .track-image {
   width: 100%;
   border-radius: 16px;
@@ -14,4 +11,16 @@
 .track-name {
   font-size: 14px;
   font-weight: 600;
+}
+.track-card.col-2{
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+  cursor: pointer;
+}
+@media(max-width : 600px){
+  .track-card.col-2{
+    flex: none;
+    width: 31%;
+    max-width: none;
+  }
 }

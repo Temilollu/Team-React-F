@@ -5,11 +5,8 @@ import "./Header.css";
 class Header extends React.Component {
   
   render() {
-  
-    const header = this.props.header;
-    const name = this.props.name;
-    const description = this.props.description;
-    const image = this.props.image;
+  const {header,name,description , image, artist_name  } = this.props
+
     return (
       <div
         id="header"
@@ -19,7 +16,7 @@ class Header extends React.Component {
         <div className="col-5 header-description">
           <h5 className="featured-tag text-center d-block mt-5">{header}</h5>
           <h1 className="header-name d-block mt-3 mb-0">
-            <strong>{name}</strong>
+    <strong>{name} by {artist_name}</strong>
           </h1>
           <p className="text-left header-paragraph">{description}</p>
         </div>

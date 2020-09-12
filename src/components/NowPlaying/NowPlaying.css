@@ -9,3 +9,14 @@ audio {
   outline: none !important;
   border: none;
 }
+.current-track-name{
+  position : absolute;
+  z-index: 5;
+  font-size: 15px;
+  margin-bottom: 1rem;
+  left: 10%;
+  color: rgb(255, 0, 0);
+}
+#now-playing {
+  box-shadow: none !important;
+}

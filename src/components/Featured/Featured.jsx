@@ -11,7 +11,7 @@ const Featured = ({ currentTrack }) => {
       style={{ backgroundImage: `url(${BackgroundImage})` }}
     >
       <div className="col-4">
-        <img src={headset} alt="" className="featured-img" />
+        <img src={headset} alt="" className="featured-img img-fluid" />
       </div>
       <div className="col-8">
         <h5 className="featured-tag text-center d-block mt-5">NOW PLAYING</h5>

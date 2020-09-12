@@ -27,29 +27,39 @@ input {
 
 .header-container{
   position : absolute;
-  right : -170px
+  right: 0;
+  width: 82%;
 }
 .mobile-header {
   display: none;
 }
+ .album-container{
+  flex: auto;
+  max-width: 16.667%;
+} 
 @media(max-width : 600px){
   .album-item{
   width: 200px;
   }
   .header-container {
-    right: 0;
-    left: 10%;
-    position: absolute;
+    /* right: -30px; */
+    width: 85%;
+    margin: auto 2rem;
   }
   #header{
     display: none;
   }
   .mobile-header{
     position: relative;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    /* box-shadow: 1px 1px 10px #7f7f7f, -1px -1px 10px #b3b3b3;; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3.2rem;
+    margin-top: 5rem;
+    justify-content: center;
   }
+   .album-container{
+    flex: auto;
+    max-width: none;
+  } 
 }

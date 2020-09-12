@@ -1,6 +1,6 @@
 :root {
   --pink: #f10044;
-  --darkPink: #8d0c31;
+  --darkPink: #da0b45;
   --purple: #6a2c70;
   --black: #1b262c;
   --light: #525252;
@@ -12,19 +12,10 @@ body {
   margin: 0;
   font-family: "Quicksand", sans-serif;
   /* background: rgb(221, 221, 221); */
-  background: rgba(2, 37, 13, 0.07);
+  background-color: #282c34 !important;
+  color: white;
 }
 
-#sidebar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: #ffffff;
-  height: 100vh;
-}
 
 a {
   text-decoration: none;

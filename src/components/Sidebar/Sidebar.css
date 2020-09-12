@@ -1,13 +1,18 @@
-#sidebar {
-  background: #ffffff;
+/* #sidebar {
   height: 100vh;
-  /* position: fixed; */
+ 
   left: 0;
   top: 0;
   bottom: 0;
-  /* width: 100%; */
+  
   color: var(--light);
   overflow-y: scroll;
+} */
+html{
+  position: relative;
+}
+#weekly{
+  margin-right: 0 !important ;
 }
 .sidebar-heading {
   font-weight: 700;
@@ -47,19 +52,20 @@
 }
 .side{
   display: block;
-  background: white
+  background: white;
+  width: 17%;
 }
 @media(max-width : 900px){
   .custom-menu {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 1%;
-    right: 2%;
+    right: -490%;
     z-index: 5;
     cursor: pointer;
   }
   #side{
-    margin-left: -10px;
+    margin-left: -20px;
     background: white;
     padding: 1rem
   }
@@ -67,7 +73,7 @@
     position: absolute;
     margin-left: -255px;
     z-index: 8;
-    
+    width: auto;
   }
   .mobile__body{
     max-width: 100% !important;

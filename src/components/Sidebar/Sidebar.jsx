@@ -19,14 +19,14 @@ class Sidebar  extends React.Component {
   render(){
   return (
     <React.Fragment>
-      <div className="row px-3">
+      <div className="row px-3" >
       <div className="custom-menu" onClick={this.handleClick}>
             <button type="button" id="sidebarCollapse" className="btn btn-primary">
                 <i className="fa fa-bars"></i>
                   <span className="sr-only">Toggle Menu</span>
             </button>
           </div>
-        <section id={this.state.toggle ? 'side' : '' } className="side">
+        <section id={this.state.toggle ? 'side' : '' } className="side" style={{position : 'fixed'}}>
         <div id="brand" className="my-3 col-12">
           <Link to="/">
             <img src={Logo} alt="" />
@@ -44,7 +44,7 @@ class Sidebar  extends React.Component {
             <li className="nav-link">
               {" "}
               <Link
-                to="/artists"
+                // to="/artists"
                 id={this.props.activePath === "artists" ? "active-nav" : ""}
               >
                 <i className="pr-3 fas fa-users"></i>Artists
@@ -63,7 +63,7 @@ class Sidebar  extends React.Component {
               {" "}
               <Link
                 to="/tracks"
-                id={this.props.activePath === "/tracks" ? "active-nav" : ""}
+                id={this.props.activePath === "tracks" ? "active-nav" : ""}
               >
                 <i className="pr-3 fas fa-compact-disc"></i> Tracks
               </Link>
@@ -123,30 +123,6 @@ class Sidebar  extends React.Component {
                 <i className="pr-3 fas fa-compact-disc"></i> Playlist 4
               </Link>
             </li>{" "}
-            <li className="nav-link">
-              {" "}
-              <Link to="/albums">
-                <i className="pr-3 fas fa-compact-disc"></i> Playlist 5
-              </Link>
-            </li>{" "}
-            <li className="nav-link">
-              {" "}
-              <Link to="/albums">
-                <i className="pr-3 fas fa-compact-disc"></i> Playlist 6
-              </Link>
-            </li>
-            <li className="nav-link">
-              {" "}
-              <Link to="/albums">
-                <i className="pr-3 fas fa-compact-disc"></i> Playlist 6
-              </Link>
-            </li>
-            <li className="nav-link">
-              {" "}
-              <Link to="/albums">
-                <i className="pr-3 fas fa-compact-disc"></i> Playlist 6
-              </Link>
-            </li>
           </ul>
         </div>
         </section>

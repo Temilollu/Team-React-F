@@ -11,19 +11,16 @@ const TopArtists = ({ artists }) => {
   // website:
   return (
     <React.Fragment>
-      <div className="row mb-4" id="top-artists">
+      <div className=" mb-4" id="top-artists">
         <div className="col-12">
           <h1 className="main-heading my-4">Monthly Top Artists</h1>
-          <Link to="/artists" className="see-all-btn">
-            See All
-          </Link>
         </div>
         {artists.map((artist, idx) => {
           while (idx < 6) {
             return (
               <Link
-                to={`/artists/${artist.id}`}
-                className="col-2"
+                // to={`/artists/${artist.id}`}
+                className="col-2 top_artist"
                 key={artist.id}
               >
                 <img
@@ -39,7 +36,9 @@ const TopArtists = ({ artists }) => {
           }
           return null;
         })}
-        ;
+       <Link to="/" className="see-all-btn">
+            View All artists
+          </Link>
       </div>
     </React.Fragment>
   );

@@ -3,7 +3,26 @@
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 9999999999999;
+  z-index: 3;
   border-radius: 90px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.show{
+  padding: 0 !important;
+}
+
+.charts_tracks .col-6{
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+@media(max-width : 600px){
+  .charts_tracks{
+    flex-direction: column !important;
+  }
+  .charts_tracks .col-6{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }

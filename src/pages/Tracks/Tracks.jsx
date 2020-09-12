@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Track from "../../components/Track/Track";
 
-import SideBar from '../../components/Sidebar/Sidebar'
+import Sidebar from '../../components/Sidebar/Sidebar'
 import './Track.css'
 
 class Tracks extends Component {
@@ -13,20 +13,20 @@ class Tracks extends Component {
 
   render() {
     this.path = this.props.match.path;
-    const { tracks, currentTrack, handleClick } = this.props;
-    console.log(currentTrack)
+    const { tracks, handleClick } = this.props;
+
     return (
       <section className="container-fluid row section-container" style={{paddingLeft : 0}}>
         <div  className="col-2">
-             <SideBar/>
+              <Sidebar activePath="tracks" /> 
         </div>
      
-        <div className="col-10 track-item" style={{marginTop : this.path === '/tracks' ? '0' :'25rem' }} >
-        <div className="jumbotron jumbotron-fluid px-5">
+        <div className="col-10 track-item" style={{marginTop : this.path === '/tracks' ? '0' :'32rem' }} >
+        <div className="jumbotron-fluid px-5">
           
-          <h1>TRACKS</h1>
+          <h1>TRACKS ({ tracks.length}) </h1>
         </div>
-        <div className="row my-5 justify-content-center px-5" style={{width : '100%' }} >
+        <div className="row  justify-content-center px-5" style={{width : '100%' }} >
           {tracks.map((track) => {
             return (
               <Track

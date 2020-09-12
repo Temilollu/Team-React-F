@@ -7,8 +7,8 @@ import Tracks from "./pages/Tracks/Tracks";
 import Artists from "./pages/Artists/Artists";
 import Profile from "./pages/Profile/Profile";
 import SigninSignup from "./pages/Signin-Signup/SigninSignup";
-import Signup from "./pages/Signin-Signup/Signup";
-import Sidebar from "./components/Sidebar/Sidebar";
+// import Signup from "./pages/Signin-Signup/Signup";
+// import Sidebar from "./components/Sidebar/Sidebar";
 import NowPlaying from "./components/NowPlaying/NowPlaying";
 
 // CSS
@@ -63,7 +63,7 @@ class App extends Component {
 
       const albumResponseJson = await albumResponse.json();
       const artistsResponseJson = await artistsResponse.json();
-
+     
       let collectedTracks = [];
       let albums = albumResponseJson.results;
       let artists = artistsResponseJson.results;
@@ -71,7 +71,7 @@ class App extends Component {
         return album.tracks.map((t) => t);
       });
       // console.log(artists);
-
+      // console.log(allTracks)
       allTracks.forEach((track) => {
         for (let i = 0; i < track.length; i++) {
           collectedTracks.push(track[i]);
@@ -92,6 +92,7 @@ class App extends Component {
   }
 
   render() {
+    
     const {
       tracks,
       currentTrack,
@@ -100,6 +101,8 @@ class App extends Component {
       featuredClicked,
       artists,
     } = this.state;
+
+
     return (
       <Router>
         <div>
@@ -145,7 +148,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route
+            {/* <Route
               path="/artists"
               render={(props) => (
                 <Artists
@@ -155,7 +158,7 @@ class App extends Component {
                   handlePath={this.handlePath}
                 />
               )}
-            />
+            /> */}
             <Route
               exact
               path="/albums/:albumid"
@@ -175,9 +178,9 @@ class App extends Component {
           </Switch>
         </div>
 
-        <div className="container-fluid px-0 mb-5">
+        <div className="container-fluid px-0 " style={{marginBottom : '5rem'}}>
           <div className="row justify-content-center">
-            <div className="col-10 mx-auto" id="now-playing">
+            <div className=" mx-auto" id="now-playing">
               <NowPlaying currentTrack={this.state.currentTrack} />
             </div>
           </div>

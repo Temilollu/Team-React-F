@@ -6,9 +6,10 @@ import Header from '../../components/Header/Header';
 import { Link } from 'react-router-dom'
 
 const AlbumTracksList = (props) => {
-   console.log(props)
+  
     const { handleClick, currentTrack } = props
     const { tracks, artist_name, name, image } = props.album
+
     return ( 
      <div >
          {/* <Link to="/albums" style={{
@@ -29,17 +30,17 @@ const AlbumTracksList = (props) => {
            <Header 
            header="ALBUM"
            name={name}
-           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-           repellat, quisquam ad sequi ab distinctio."
            image={image}
+           artist_name={artist_name}
         />
         <div className="mobile-header">
            <h1>{name}</h1>
             <h2>By : {artist_name} </h2>
-            <img src={image} alt=""/>
+            <img src={image} alt=""/> 
         </div>
            </div>
            <div >
+             
                <Tracks tracks={tracks}  handleClick={handleClick} currentTrack={currentTrack} {...props} /> 
            </div>
          

@@ -3,14 +3,16 @@ import { withRouter, useParams } from "react-router-dom";
 import AlbumTracksList from "./album.track.list";
 
 const AlbumTracks = (props) => {
-  console.log(props)
+
   const albumId = props.match.params.albumid;
   
-  const { albums, currentTrack, handleClick } = props;
+  const { albums, currentTrack, handleClick } = props; 
+ 
   return (
-    <div className="row" style={{marginRight : 0}}>
-      <div className="col-10">
+    <div style={{marginRight : 0}}>
+      {/* <div className="col-10"> */}
         {albums.map((album) => {
+        
           return album.id === albumId ? (
             <AlbumTracksList
               album={album}
@@ -20,7 +22,7 @@ const AlbumTracks = (props) => {
             />
           ) : null;
         })}
-      </div>
+      {/* </div> */}
     </div>
   );
 };
