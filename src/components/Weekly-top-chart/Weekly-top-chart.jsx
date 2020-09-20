@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Weekly-top-chart.css";
-
+import { connect } from 'react-redux';
+import { selectAlbumItemstracks } from '../../Redux/track/track-selector';
+import getCurrentTrack from '../../Redux/track/track-action'
 class WeeklyTopChart extends Component {
   constructor() {
     super();
@@ -12,7 +14,7 @@ class WeeklyTopChart extends Component {
   //   console.log(this.props);
   // }
   render() {
-    const { tracks, handleClick } = this.props;
+    const { tracks, currentTrack } = this.props;
     let weeklyTracks = [];
     if (tracks.length) {
       for (let i = 8; i < 14; i++) {
@@ -31,7 +33,7 @@ class WeeklyTopChart extends Component {
                 <div
                   className="track-card col-2 my-3 text-center"
                   key={idx}
-                  onClick={() => handleClick(track.id)}
+                  onClick={ () => currentTrack(track) }
                 >
                   <img
                     src="https://www.pngitem.com/pimgs/m/480-4807647_apple-music-png-transparent-png.png"
@@ -47,5 +49,12 @@ class WeeklyTopChart extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  tracks : selectAlbumItemstracks(state)
+})
+const mapDispatchToProps = dispatch => ({
+  currentTrack : track => dispatch(getCurrentTrack(track))
+})
 
-export default WeeklyTopChart;
+
+export default connect(mapStateToProps,mapDispatchToProps)(WeeklyTopChart);

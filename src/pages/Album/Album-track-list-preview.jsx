@@ -1,23 +1,23 @@
 import React from "react";
 import { withRouter, useParams } from "react-router-dom";
+import { connect } from 'react-redux';
 import AlbumTracksList from "./album.track.list";
-
+import { selectAlbum} from '../../Redux/track/track-selector'
 const AlbumTracks = (props) => {
 
   const albumId = props.match.params.albumid;
   
-  const { albums, currentTrack, handleClick } = props; 
+  const { album2 } = props; 
  
   return (
     <div style={{marginRight : 0}}>
       {/* <div className="col-10"> */}
-        {albums.map((album) => {
+        {album2.map((album) => {
         
           return album.id === albumId ? (
             <AlbumTracksList
               album={album}
-              currentTrack={currentTrack}
-              handleClick={handleClick}
+        
               key={album.id}
             />
           ) : null;
@@ -27,4 +27,9 @@ const AlbumTracks = (props) => {
   );
 };
 
-export default withRouter(AlbumTracks);
+
+const mapStateToProps = state => ({
+  album2 : selectAlbum(state)
+})
+
+export default connect(mapStateToProps)(withRouter(AlbumTracks))

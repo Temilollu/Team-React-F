@@ -5,7 +5,13 @@
 .track {
   cursor: pointer;
 }
+.blackButton{
+  color: white;
+}
 
+.whiteButton{
+  color: red;
+}
 @media(max-width : 600px){
   .track-item{
     width: 100%;
@@ -15,8 +21,8 @@
   padding-left: 0;
   }
 .section-container{
-  padding: 0;
-  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 .track {
   padding-left: .5rem;

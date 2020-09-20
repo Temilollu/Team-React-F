@@ -1,0 +1,15 @@
+.recently-played{
+    color: white;
+}
+.recently-played table{
+  color: inherit;
+}
+.last{
+    display: table-cell;
+}
+
+@media(max-width : 375px){
+    .last{
+        display: none;
+    }
+}

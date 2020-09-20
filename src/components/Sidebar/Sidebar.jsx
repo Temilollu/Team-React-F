@@ -17,16 +17,17 @@ class Sidebar  extends React.Component {
   }
  
   render(){
+   let favHam = this.props.activePath === 'favourites' ? 'addMargin' : ''
   return (
     <React.Fragment>
       <div className="row px-3" >
-      <div className="custom-menu" onClick={this.handleClick}>
+      <div className={`${favHam} custom-menu`} onClick={this.handleClick}>
             <button type="button" id="sidebarCollapse" className="btn btn-primary">
                 <i className="fa fa-bars"></i>
                   <span className="sr-only">Toggle Menu</span>
             </button>
           </div>
-        <section id={this.state.toggle ? 'side' : '' } className="side" style={{position : 'fixed'}}>
+        <section id={this.state.toggle ? 'side' : '' } className="side" style={{position : 'fixed', top : 0}}>
         <div id="brand" className="my-3 col-12">
           <Link to="/">
             <img src={Logo} alt="" />
@@ -54,7 +55,7 @@ class Sidebar  extends React.Component {
               {" "}
               <Link
                 to="/albums"
-                id={this.props.activePath === "albums" ? "active-nav" : ""}
+                id={this.props.activePath.includes('albums') ? "active-nav" : ""}
               >
                 <i className="pr-3 fas fa-compact-disc"></i> Albums
               </Link>
@@ -82,15 +83,12 @@ class Sidebar  extends React.Component {
             </li>
             <li className="nav-link">
               {" "}
-              <Link to="/artists">
-                <i className="pr-3 fas fa-heart"></i> Favorite Songs
+              <Link 
+              to="/favourites"
+              id={this.props.activePath === "favourites" ? "active-nav" : ""}
+              >
+                <i className="pr-3 fas fa-heart"></i> Favourite Songs
               </Link>{" "}
-            </li>
-            <li className="nav-link">
-              {" "}
-              <Link to="/albums">
-                <i className="pr-3 fas fa-compact-disc"></i> Albums
-              </Link>
             </li>
           </ul>
         </div>

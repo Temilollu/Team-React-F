@@ -1,13 +1,10 @@
 import React from "react";
 import "./TopCharts.css";
-const TopCharts = ({ tracks, handleClick }) => {
-  // id:
-  // image:
-  // joindate:
-  // name:
-  // shareurl:
-  // shorturl:
-  // website:
+import { connect } from 'react-redux';
+import { selectAlbumItemstracks } from '../../Redux/track/track-selector';
+import getCurrentTrack from '../../Redux/track/track-action'
+const TopCharts = ({ tracks, currentTrack }) => {
+ 
   return (
     <React.Fragment>
       <div className="row" id="top-charts">
@@ -18,20 +15,26 @@ const TopCharts = ({ tracks, handleClick }) => {
           {tracks.map((track, idx) => {
             while (idx < 6) {
               return (
-                <li onClick={() => handleClick(track.id)} key={track.id}>
+                <li onClick={() => currentTrack(track) } key={track.id}>
                   <span className="numbering">{idx + 1}</span>
                   {track.name}
                 </li>
-              );
+              )
             }
 
             return null;
           })}
         </ul>
-        ;
+        
       </div>
     </React.Fragment>
   );
 };
+const mapStateToProps = state => ({
+  tracks : selectAlbumItemstracks(state)
+})
+const mapDispatchToProps = dispatch => ({
+  currentTrack : track => dispatch(getCurrentTrack(track))
+})
 
-export default TopCharts;
+export default connect(mapStateToProps,mapDispatchToProps)(TopCharts);

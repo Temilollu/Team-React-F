@@ -4,8 +4,9 @@
   padding: 10px;
 }
 .track-title {
-  font-size: 16px;
+  font-size: 16px !important;
   color: var(--darkPink);
+  margin-bottom: 0;
 }
 
 .track.col-4{

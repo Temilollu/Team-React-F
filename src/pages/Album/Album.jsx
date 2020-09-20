@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+import { selectAlbum} from '../../Redux/track/track-selector'
 
 import Sidebar from "../../components/Sidebar/Sidebar";
 
@@ -15,8 +17,8 @@ class Album extends Component {
   }
 
   componentDidMount() {
-    let path = this.props.match.path;
-    this.props.handlePath(path);
+    // let path = this.props.match.path;
+    // this.props.handlePath(path);
   }
   handleChange = (e) => {
     this.setState({
@@ -26,8 +28,10 @@ class Album extends Component {
 
  
   render() {
-    const { albums, history, match } = this.props;
-    const albumFiltered = albums.filter((album) =>
+    const {  history, match, album2} = this.props;
+    let album = album2.filter((a,id) => id < 25 )
+
+    const albumFiltered = album.filter((album) =>
       album.name.toLowerCase().includes(this.state.filtered.toLowerCase())
     );
    
@@ -89,4 +93,8 @@ class Album extends Component {
   }
 }
 
-export default withRouter(Album);
+const mapStateToProps = state => ({
+  album2 : selectAlbum(state)
+})
+
+export default connect(mapStateToProps)(withRouter(Album));

@@ -2,6 +2,8 @@ import React from "react";
 import BackgroundImage from "./bg-3.png";
 import headset from "./headset.png";
 import "./Featured.css";
+import { connect } from 'react-redux'
+
 
 const Featured = ({ currentTrack }) => {
   return (
@@ -20,7 +22,6 @@ const Featured = ({ currentTrack }) => {
           <strong>{currentTrack ? currentTrack.name : null}</strong>
         </h1>
         {/* <p className="featured-artist d-block">{currentTrack }</p> */}
-
         {/* <i
           className={featuredClicked ? "fa fa-pause my-3" : "fa fa-play my-3"}
           onClick={() => handleClick(tracks[99].id, true)}
@@ -30,4 +31,8 @@ const Featured = ({ currentTrack }) => {
   );
 };
 
-export default Featured;
+const mapStateToProps = state => ({
+  currentTrack : state.currentTrackArray.currentTrack,
+})
+
+export default connect(mapStateToProps)(Featured);

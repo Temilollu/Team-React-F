@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const AlbumTracksList = (props) => {
   
-    const { handleClick, currentTrack } = props
+    const { currentTrack } = props
     const { tracks, artist_name, name, image } = props.album
 
     return ( 
@@ -41,7 +41,7 @@ const AlbumTracksList = (props) => {
            </div>
            <div >
              
-               <Tracks tracks={tracks}  handleClick={handleClick} currentTrack={currentTrack} {...props} /> 
+               <Tracks tracks={tracks}  currentTrack={currentTrack} {...props} /> 
            </div>
          
          {/* <h1>Album name : {name}</h1>

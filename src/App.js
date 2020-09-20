@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { connect } from 'react-redux'
+import { selectAlbumItemstracks, selectAlbumItems} from './Redux/track/track-selector'
+import Spinner from 'react-bootstrap/Spinner'
 // Pages
 import Homepage from "./pages/Homepage/Homepage";
 import Album from "./pages/Album/Album";
@@ -7,6 +10,10 @@ import Tracks from "./pages/Tracks/Tracks";
 import Artists from "./pages/Artists/Artists";
 import Profile from "./pages/Profile/Profile";
 import SigninSignup from "./pages/Signin-Signup/SigninSignup";
+import SignUp from './pages/Signin-Signup//Signup'
+import {isFetchingAsync, isFetchingTracks}  from './Redux/getData/album-action';
+import Favourites from './pages/Favourites/Favourites'
+import RecentlyPlayed from './pages/Recently Played/Recently-played'
 // import Signup from "./pages/Signin-Signup/Signup";
 // import Sidebar from "./components/Sidebar/Sidebar";
 import NowPlaying from "./components/NowPlaying/NowPlaying";
@@ -16,138 +23,56 @@ import "./App.css";
 import AlbumTracks from "./pages/Album/Album-track-list-preview";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      albums: [],
-      artists: [],
-      tracks: [],
-      currentTrack: "",
-      index: 0,
-      path: "/",
-
-      featuredClicked: false,
-    };
-  }
-
-  handlePath = (path) => {
-    this.setState({
-      path,
-    });
-  };
-
-  handleClick = (id, featuredClicked = false) => {
-    // console.log(id);
-    let { tracks } = this.state;
-    let c = tracks.filter((track) => track.id === id);
-    // console.log(c);
-    this.setState({
-      currentTrack: c[0],
-      featuredClicked:
-        featuredClicked === true
-          ? !this.state.featuredClicked
-          : this.state.featuredClicked,
-    });
-  };
 
   async componentDidMount() {
-    try {
-      let [albumResponse, artistsResponse] = await Promise.all([
-        fetch(
-          "https://api.jamendo.com/v3.0/albums/tracks/?client_id=d5d26306&limit=all"
-        ),
-        fetch(
-          "https://api.jamendo.com/v3.0/artists/?client_id=d5d26306&limit=all"
-        ),
-      ]);
-
-      const albumResponseJson = await albumResponse.json();
-      const artistsResponseJson = await artistsResponse.json();
-     
-      let collectedTracks = [];
-      let albums = albumResponseJson.results;
-      let artists = artistsResponseJson.results;
-      let allTracks = albums.map((album) => {
-        return album.tracks.map((t) => t);
-      });
-      // console.log(artists);
-      // console.log(allTracks)
-      allTracks.forEach((track) => {
-        for (let i = 0; i < track.length; i++) {
-          collectedTracks.push(track[i]);
-        }
-      });
-      let { index } = this.state;
-      let currentTrack = collectedTracks[index];
-
-      this.setState({
-        tracks: collectedTracks,
-        currentTrack,
-        albums,
-        artists,
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    const { getAlbumData, tracko } = this.props
+    getAlbumData()
+    tracko()
   }
 
-  render() {
-    
-    const {
-      tracks,
-      currentTrack,
-      path,
-      albums,
-      featuredClicked,
-      artists,
-    } = this.state;
+  
+  
 
+  render() {
+   const { tracks} = this.props
 
     return (
       <Router>
         <div>
+           {this.props.isFetching && <Spinner animation="border" role="status" variant="danger">
+             <span className="sr-only">Loading...</span>
+  </Spinner>}
           <Switch>
             <Route
               exact
               path="/"
               render={(props) => (
-                <Homepage
-                  {...props}
-                  tracks={tracks}
-                  currentTrack={currentTrack}
-                  handlePath={this.handlePath}
-                  handleClick={this.handleClick}
-                  featuredClicked={featuredClicked}
-                  artists={artists}
-                  albums={albums}
-                  path={path}
+                <Homepage {...props} /> )} 
                 />
-              )}
-            />
+        
             <Route
               path="/tracks"
               render={(props) => (
-                <Tracks
-                  {...props}
-                  tracks={tracks}
-                  currentTrack={currentTrack}
-                  handleClick={this.handleClick}
-                  handlePath={this.handlePath}
-                />
-              )}
-            />
+                <Tracks  {...props} tracks={tracks}/>  )}
+                 />
+           
             <Route
               exact
               path="/albums"
-              render={(props) => (
-                <Album
-                  {...props}
-                  tracks={tracks}
-                  handlePath={this.handlePath}
-                  albums={albums}
-                />
-              )}
-            />
+              render={(props) => (<Album  {...props}  />)} 
+              />
+
+            <Route
+              exact
+              path="/recently-played"
+              render={(props) => (<RecentlyPlayed   {...props}  />)} 
+              />
+              <Route
+              exact
+              path="/favourites"
+              render={(props) => (<Favourites  {...props}  />)} 
+              />
+  
             {/* <Route
               path="/artists"
               render={(props) => (
@@ -162,26 +87,18 @@ class App extends Component {
             <Route
               exact
               path="/albums/:albumid"
-              render={(props) => (
-                <AlbumTracks
-                  {...props}
-                  albums={albums}
-                  handlePath={this.handlePath}
-                  currentTrack={currentTrack}
-                  handleClick={this.handleClick}
-                />
-              )}
-            />
-            {/* <Route path="/albums:albumid" component={this.albumDetail} />  */}
+              render={(props) => (<AlbumTracks {...props}/> )}
+                 />
             <Route path="/profile" component={Profile} />
             <Route path="/signin" component={SigninSignup} />
+            <Route path="/signup" component={SignUp} />
           </Switch>
         </div>
 
         <div className="container-fluid px-0 " style={{marginBottom : '5rem'}}>
           <div className="row justify-content-center">
             <div className=" mx-auto" id="now-playing">
-              <NowPlaying currentTrack={this.state.currentTrack} />
+              <NowPlaying  />
             </div>
           </div>
         </div>
@@ -189,4 +106,15 @@ class App extends Component {
     );
   }
 }
-export default App;
+
+const mapStateToProps = state => ({
+  isFetching : state.getData.isFetching,
+  tracks : state.getData.trackData,
+})
+
+const mapDispatchToProps = dispatch => ({
+  getAlbumData : album => dispatch(isFetchingAsync(album)),
+  tracko : () => dispatch(isFetchingTracks())
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

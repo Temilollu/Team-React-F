@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { selectAlbum} from '../../Redux/track/track-selector'
 import "./TopAlbums.css";
-const TopAlbums = ({ albums }) => {
+const TopAlbums = ({ album2 }) => {
   // id:
   // image:
   // joindate:
@@ -16,7 +18,7 @@ const TopAlbums = ({ albums }) => {
           <h1 className="main-heading my-4">Monthly Top Albums</h1>
           
         </div>
-        {albums.map((album, idx) => {
+        {album2.map((album, idx) => {
           while (idx < 4) {
             return (
               <Link to={`/albums/${album.id}`} className="col-3" key={album.id}>
@@ -41,4 +43,8 @@ const TopAlbums = ({ albums }) => {
   );
 };
 
-export default TopAlbums;
+const mapStateToProps = state => ({
+  album2 : selectAlbum(state)
+})
+
+export default connect(mapStateToProps)(TopAlbums)

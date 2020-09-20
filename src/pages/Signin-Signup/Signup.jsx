@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "./logo.png";
 import "./SigninSignup.css";
 
-class SigninSignup extends Component {
+class Signup extends Component {
   constructor() {
     super();
     this.state = {
@@ -95,4 +95,4 @@ class SigninSignup extends Component {
   }
 }
 
-export default SigninSignup;
+export default Signup;

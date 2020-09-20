@@ -18,8 +18,8 @@ class HomePage extends Component {
   // }
 
   componentDidMount() {
-    let path = this.props.match.path;
-    this.props.handlePath(path);
+    // let path = this.props.match.path;
+    // this.props.handlePath(path);
   }
   render() {
     return (
@@ -33,32 +33,22 @@ class HomePage extends Component {
             style={{ position: "absolute", right: 0, padding : 0 }}
           >
             <div className="col-12 d-flex show">
-              <Featured
-                tracks={this.props.tracks}
-                currentTrack={this.props.currentTrack}
-              />
+              <Featured />
+            
             </div>
 
             <div className="col-12 d-flex" style={{paddingRight : 0}} >
-              <WeeklyTopChart
-                tracks={this.props.tracks}
-                handleClick={this.props.handleClick}
-              />
+              <WeeklyTopChart/>
             </div>
             <div className="charts_tracks d-flex">
               <div className="col-6">
-                <TopCharts
-                  tracks={this.props.tracks}
-                  handleClick={this.props.handleClick}
-                />
+                <TopCharts />
               </div>
               <div className="col-6">
-                <TopArtists artists={this.props.artists} />
-
-                <TopAlbums
-                  albums={this.props.albums}
-                  handleClick={this.props.handleClick}
-                />
+                {/* <TopArtists artists={this.props.artists} /> */}
+                <TopAlbums  />
+                
+              
               </div>
             </div>
           </div>
