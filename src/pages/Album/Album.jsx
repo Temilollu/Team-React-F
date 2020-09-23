@@ -42,7 +42,7 @@ class Album extends Component {
             <Sidebar activePath="albums" /> 
           </div>
           <div className="col-10 mobile__body">
-            <div className="row">
+            <div className="row album-header" >
               <div className=" jumbotron-fluid w-100">
                 <div className="container">
                   <h1 className="main-h1">JAAMZ ALBUMS</h1>
@@ -65,7 +65,7 @@ class Album extends Component {
                 </div>
               </div>
             </div>
-            <div className="row justify-content-between">
+            <div className="row justify-content-between" style={{marginTop: '2rem'}}>
               {albumFiltered.map((album) => {
                 
                 return (

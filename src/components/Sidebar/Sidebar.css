@@ -26,8 +26,9 @@ html{
 #playlists {
   position: relative;
 }
-.addMargin{
-  top : -70px !important;
+
+.addMoreMargin{
+  top: -100px !important;
 }
 .add-btn {
   position: absolute;
@@ -54,21 +55,24 @@ html{
 }
 .side{
   display: block;
-  background: white;
+  background: #282c34;
+  border-right: 1px solid white ;
+  font-weight: bold;
+  color: white;
   width: 17%;
 }
 @media(max-width : 900px){
   .custom-menu {
     display: block;
     position: absolute;
-    top: 1%;
+    top: 10px;
     right: -490%;
     z-index: 5;
     cursor: pointer;
   }
   #side{
     margin-left: -20px;
-    background: white;
+    
     padding: 1rem
   }
   .side{

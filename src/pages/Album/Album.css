@@ -37,9 +37,15 @@ input {
   flex: auto;
   max-width: 16.667%;
 } 
+.album-header{
+  margin-top: 10px;
+}
 @media(max-width : 600px){
   .album-item{
   width: 200px;
+  }
+  .album-header{
+    margin-top: 4rem;
   }
   .header-container {
     /* right: -30px; */

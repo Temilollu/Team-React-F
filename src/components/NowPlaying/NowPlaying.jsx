@@ -8,7 +8,7 @@ const NowPlaying = (props) => {
   return (
     <div className="w-100 text-center audio-area d-flex" style={{position : 'relative'}} >
       <h1 className="current-track-name">{currentTrack.name}</h1>
-      <audio src={currentTrack.audio} controls muted  loop></audio>
+      <audio src={currentTrack.audio} controls muted autoPlay loop></audio>
     </div>
   );
 };

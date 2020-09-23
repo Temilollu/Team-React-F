@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from 'react-redux'
-import { selectAlbumItemstracks, selectAlbumItems} from './Redux/track/track-selector'
+
 import Spinner from 'react-bootstrap/Spinner'
+import LoadingOverlay from 'react-loading-overlay/lib/LoadingOverlay';
 // Pages
 import Homepage from "./pages/Homepage/Homepage";
 import Album from "./pages/Album/Album";
@@ -34,14 +35,21 @@ class App extends Component {
   
 
   render() {
-   const { tracks} = this.props
+   const { tracks, isFetching} = this.props
 
     return (
+      <LoadingOverlay
+        active={isFetching}
+        spinner
+        text='Loading your tracks...'
+        >
       <Router>
         <div>
-           {this.props.isFetching && <Spinner animation="border" role="status" variant="danger">
+        
+
+           {/* {this.props.isFetching && <Spinner animation="border" role="status" variant="danger">
              <span className="sr-only">Loading...</span>
-  </Spinner>}
+           </Spinner>} */}
           <Switch>
             <Route
               exact
@@ -103,6 +111,7 @@ class App extends Component {
           </div>
         </div>
       </Router>
+      </LoadingOverlay>
     );
   }
 }

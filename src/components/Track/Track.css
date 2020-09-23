@@ -1,8 +1,13 @@
-.track {
+.track, td {
   cursor: pointer;
-  border-left: 1px solid white;
-  padding: 10px;
+  height: 50px;
+  font-weight: bold;
 }
+ .table-elements:hover{
+  background-color:#72727d;
+  color: black;
+ }
+
 .track-title {
   font-size: 16px !important;
   color: var(--darkPink);

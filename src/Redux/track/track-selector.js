@@ -19,8 +19,8 @@ export const selectRecentTracks = createSelector(
   [selectTracks],
   track => {
 
-    if(track.length > 5){
-      track.splice(0, track.length - 5)
+    if(track.length > 10){
+      track.splice(0, track.length - 10)
       return track.map(x => x).reverse()
     }
     return track.map(x => x).reverse()

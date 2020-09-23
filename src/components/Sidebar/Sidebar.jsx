@@ -17,11 +17,12 @@ class Sidebar  extends React.Component {
   }
  
   render(){
-   let favHam = this.props.activePath === 'favourites' ? 'addMargin' : ''
+ 
+   let recentlyPlayedSideBar = this.props.activePath === 'recently-played' ||this.props.activePath ===  'favourites' ? 'addMoreMargin' : ''
   return (
     <React.Fragment>
       <div className="row px-3" >
-      <div className={`${favHam} custom-menu`} onClick={this.handleClick}>
+      <div className={`${recentlyPlayedSideBar} custom-menu`} onClick={this.handleClick}>
             <button type="button" id="sidebarCollapse" className="btn btn-primary">
                 <i className="fa fa-bars"></i>
                   <span className="sr-only">Toggle Menu</span>

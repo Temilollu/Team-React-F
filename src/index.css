@@ -19,12 +19,12 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--black);
+  color: white;
 }
 
 a:hover {
   text-decoration: none;
-  color: var(--black);
+  color: var(--darkPink);
 }
 
 

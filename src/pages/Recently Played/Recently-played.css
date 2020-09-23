@@ -7,9 +7,11 @@
 .last{
     display: table-cell;
 }
-
-@media(max-width : 375px){
+.remove{
+    display: none !important;
+}
+@media(max-width : 475px){
     .last{
-        display: none;
+        display: none !important;
     }
 }

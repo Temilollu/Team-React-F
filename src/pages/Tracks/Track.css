@@ -12,6 +12,15 @@
 .whiteButton{
   color: red;
 }
+.track-search{
+  justify-content: space-between;
+}
+.track-search input{
+  width: 98%;
+}
+.track-search div{
+  width: 50%;
+}
 @media(max-width : 600px){
   .track-item{
     width: 100%;
@@ -27,5 +36,18 @@
 .track {
   padding-left: .5rem;
 }
+.track-search{
+  flex-direction: column;
+  align-items: flex-start;padding: 0 1rem !important;
+}
+.track-search div{
+  width: 100%;
+
+  
+}
+.track-search input{
+  width: 100%;
+}
+
 }
 

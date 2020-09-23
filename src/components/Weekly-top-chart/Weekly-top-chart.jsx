@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./Weekly-top-chart.css";
 import { connect } from 'react-redux';
 import { selectAlbumItemstracks } from '../../Redux/track/track-selector';
-import getCurrentTrack from '../../Redux/track/track-action'
+import getCurrentTrack, { AddToRecent} from '../../Redux/track/track-action'
+
 class WeeklyTopChart extends Component {
   constructor() {
     super();
@@ -14,7 +15,7 @@ class WeeklyTopChart extends Component {
   //   console.log(this.props);
   // }
   render() {
-    const { tracks, currentTrack } = this.props;
+    const { tracks, currentTrack, addRecent } = this.props;
     let weeklyTracks = [];
     if (tracks.length) {
       for (let i = 8; i < 14; i++) {
@@ -33,7 +34,7 @@ class WeeklyTopChart extends Component {
                 <div
                   className="track-card col-2 my-3 text-center"
                   key={idx}
-                  onClick={ () => currentTrack(track) }
+                  onClick={ () => { currentTrack(track); addRecent(track) }}
                 >
                   <img
                     src="https://www.pngitem.com/pimgs/m/480-4807647_apple-music-png-transparent-png.png"
@@ -50,10 +51,11 @@ class WeeklyTopChart extends Component {
   }
 }
 const mapStateToProps = state => ({
-  tracks : selectAlbumItemstracks(state)
+  tracks : state.getData.trackData,
 })
 const mapDispatchToProps = dispatch => ({
-  currentTrack : track => dispatch(getCurrentTrack(track))
+  currentTrack : track => dispatch(getCurrentTrack(track)),
+  addRecent : track => dispatch(AddToRecent(track))
 })
 
 
